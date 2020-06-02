@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+<style>
+body{
+font-family: 'Noto Sans TC', sans-serif;
+	overflow-x: hidden;
+}
+.ball {
+  position: absolute;
+  border-radius: 100%;
+  opacity: 0.7;
+}
+</style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" style="padding: 0px;background:url(https://media.istockphoto.com/photos/gradient-blue-and-pink-soft-color-background-picture-id858983438?k=6&m=858983438&s=170667a&w=0&h=pg9Y0XkWT2298avgdwxz7qRSyQJajidgBTJ7kcXg80Y=);background-size:cover;">
+  <a class="navbar-brand" href="index.html"><img src="Logo1.png"></a>
+</nav>
+
+<div class="container-fluid" style="margin-top:80px">
+
+<!--點擊事件-->
+<div onclick="clickMe(this)" class="text-center badge-danger" style="border-radius:3px"><h1>您好呀~</h1>點擊我</div>
+<script>
+function clickMe(obj) {
+  if (obj.innerHTML == "<h1>您好呀~</h1>點擊我") {
+    obj.innerHTML = "<h2>祝您每天都開心喲~</h2>再次點擊我";
+    return;
+  }
+  if (obj.innerHTML == "<h2>祝您每天都開心喲~</h2>再次點擊我") {
+    obj.innerHTML = "<h3>謝謝^^</h3>";  
+    return; 
+  }
+  if (obj.innerHTML == "<h3>謝謝^^</h3>") {
+  obj.innerHTML = "<h4>再點擊一次關閉。</h4>";  
+    return; 
+  }
+  if (obj.innerHTML == "<h4>再點擊一次關閉。</h4>") {
+    obj.style.display = "none";
+    return;
+  }
+}
+</script>
+
+<!--圖片-->
+<img src="https://www.freevector.com/uploads/vector/preview/30761/Happy-Birthday-Wishes.jpg" width="50%" class="mx-auto d-block rounded-circle" alt="HappyBirthday">
+
+<!--Title-->
+<h1 class="text-center" style="color:tomato;">2020.06.02</h1>
+
+</body>
+<script>
+//Source:https://codepen.io/nashvail/pen/wpGgXO
+// Some random colors
+const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
+
+const numBalls = 50;
+const balls = [];
+
+for (let i = 0; i < numBalls; i++) {
+  let ball = document.createElement("body");
+  ball.classList.add("ball");
+  ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+  ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+  ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+  ball.style.transform = `scale(${Math.random()})`;
+  ball.style.width = `${Math.random()}em`;
+  ball.style.height = ball.style.width;
+  
+  balls.push(ball);
+  document.body.append(ball);
+}
+
+// Keyframes
+balls.forEach((el, i, ra) => {
+  let to = {
+    x: Math.random() * (i % 2 === 0 ? -11 : 11),
+    y: Math.random() * 12
+  };
+
+  let anim = el.animate(
+    [
+      { transform: "translate(0, 0)" },
+      { transform: `translate(${to.x}rem, ${to.y}rem)` }
+    ],
+    {
+      duration: (Math.random() + 1) * 2000, // random duration
+      direction: "alternate",
+      fill: "both",
+      iterations: Infinity,
+      easing: "ease-in-out"
+    }
+  );
+});
+
+</script>
+</html>
+
+
